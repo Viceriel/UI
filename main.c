@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include"vykreslenie.h"
 
 /*
  * 
@@ -14,7 +15,7 @@
 int main() {
     int **b;
     b=user_input();
-    printf("%d", b);
+    printf("%d", b[5][1]);
     getchar();
     getchar();
     return (EXIT_SUCCESS);}

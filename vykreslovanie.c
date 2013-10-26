@@ -4,7 +4,7 @@
 #include<time.h>
 #include"vykreslenie.h"
 
-void user_input(void){
+int user_input(){
     int a[9][9]={(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),};
     int x,y,i,j,z;
     srand(time(NULL));
@@ -30,6 +30,7 @@ void user_input(void){
     vykreslovac(a);}
 
 int vykreslovac(int a[9][9]){
+    int **b;
     int i, j;
     for(i=0; i<9; i++){
         printf("\n");
@@ -38,4 +39,10 @@ int vykreslovac(int a[9][9]){
                 printf("<");}
             else{
             printf(".");}}}
-    return a;}
+    b=(int**)malloc(9*sizeof(int*));
+    for(i=0; i<9; i++){
+        b=(int*)malloc(9*sizeof(int));}
+    for(i=0; i<9; i++){
+        for(j=0; i<9; i++){
+            b[i]=a[i];}}
+    return b;}
