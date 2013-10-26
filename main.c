@@ -12,7 +12,10 @@
  * 
  */
 int main() {
-    user_input();
+    int **b;
+    b=user_input();
+    printf("%d", b);
+    getchar();
     getchar();
     return (EXIT_SUCCESS);}
 

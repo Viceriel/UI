@@ -29,7 +29,7 @@ void user_input(void){
             }}
     vykreslovac(a);}
 
-void vykreslovac(int a[9][9]){
+int vykreslovac(int a[9][9]){
     int i, j;
     for(i=0; i<9; i++){
         printf("\n");
@@ -38,4 +38,4 @@ void vykreslovac(int a[9][9]){
                 printf("<");}
             else{
             printf(".");}}}
-    getchar();}
+    return a;}

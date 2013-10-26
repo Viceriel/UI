@@ -12,7 +12,7 @@
 #define CORUPTED_SEA -1 
 #define COUNTER       2
 void user_input(void);
-void vykreslovac(int [][]);
+int vykreslovac(int [][]);
 
 
 #endif	/* VYKRESLENIE_H */
