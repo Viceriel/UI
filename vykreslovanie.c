@@ -43,7 +43,7 @@ void vykreslovac(int a[9][9]){
             else if(a[i][j]==CORUPTED_SEA){
                 printf("x");}
             else if(a[i][j]==COUNTER_MINE){
-                printf("x");}
+                printf(">");}
             else if(a[i][j]==COUNTER_UI){
                 printf("x");}
             else{
