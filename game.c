@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 #include"game.h"
 #include"vykreslenie.h"
 
@@ -31,9 +32,34 @@ void winner(char a){
          exit(EXIT_FAILURE);}
 
 void UI(int a[9][9]){
-    printf("sewas");
-    vykreslovac(a);
-    }
+    int i,j,sp1=0,sp2=0,UI=0,counter=0;
+    for(i=0;i<9;i++){
+        for(j=0;j<9;j++){
+            if(a[i][j]==COUNTER_UI){
+                UI=1;
+                sp1=i;
+                sp2=j;}}}
+    if(sp2+1>8){
+        UI=0;}
+    if(UI==0){
+        srand(time(NULL));
+        int s1=(rand()%8)+1;
+        int s2=(rand()%8)+1;
+        while((a[s1][s2]==CORUPTED_SEA)||(a[s1][s2]==SHIP_UI)||(a[s1][s2]==COUNTER_MINE)){
+            s1=(rand()%8)+1;
+            s2=(rand()%8)+1;}
+        if(a[s1][s2]==SEA){
+            a[s1][s2]=CORUPTED_SEA;
+            vykreslovac(a);}
+        else if(a[s1][s2]==SHIP_MINE){
+            a[s1][s2]=COUNTER_UI;
+            vykreslovac(a);}}
+    if(a[sp1][sp2+1]==SHIP_MINE){
+        a[sp1][sp2+1]=COUNTER_UI;
+        vykreslovac(a);}
+    else if(a[sp1][sp2+1]==SEA){
+        a[sp1][sp2+1]=CORUPTED_SEA;
+        vykreslovac(a);}}
 
 void My_Turn(int a[9][9]){
     int s1,s2;
