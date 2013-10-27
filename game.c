@@ -24,6 +24,7 @@ void winner(char a){
         system("cls");
         printf("Human inteligent loose. Mankind is lost");
         getchar();
+        getchar();
         exit(EXIT_FAILURE);}
     else system("cls");
          printf("Organics machines are stronger than metal");
@@ -39,27 +40,42 @@ void UI(int a[9][9]){
                 UI=1;
                 sp1=i;
                 sp2=j;}}}
-    if(sp2+1>8){
-        UI=0;}
+    if(a[sp1][sp2+1]==CORUPTED_SEA && UI==1){
+        i=sp1;
+        for(j=8;j>=0;j--){
+            if(a[i][j]==COUNTER_UI){
+                sp2=j;
+                counter=1;}}}
+    
+    
     if(UI==0){
         srand(time(NULL));
-        int s1=(rand()%8)+1;
-        int s2=(rand()%8)+1;
+        int s1=(rand()%9);
+        int s2=(rand()%9);
         while((a[s1][s2]==CORUPTED_SEA)||(a[s1][s2]==SHIP_UI)||(a[s1][s2]==COUNTER_MINE)){
-            s1=(rand()%8)+1;
-            s2=(rand()%8)+1;}
+            s1=(rand()%9);
+            s2=(rand()%9);}
         if(a[s1][s2]==SEA){
             a[s1][s2]=CORUPTED_SEA;
             vykreslovac(a);}
         else if(a[s1][s2]==SHIP_MINE){
             a[s1][s2]=COUNTER_UI;
             vykreslovac(a);}}
-    if(a[sp1][sp2+1]==SHIP_MINE){
-        a[sp1][sp2+1]=COUNTER_UI;
-        vykreslovac(a);}
+    if(counter==0){
+        if(a[sp1][sp2+1]==SHIP_MINE){
+            a[sp1][sp2+1]=COUNTER_UI;
+            vykreslovac(a);}
     else if(a[sp1][sp2+1]==SEA){
-        a[sp1][sp2+1]=CORUPTED_SEA;
-        vykreslovac(a);}}
+            a[sp1][sp2+1]=CORUPTED_SEA;
+            vykreslovac(a);}}
+    else if(counter==1){
+        if(a[sp1][sp2-1]==SHIP_MINE){
+            a[sp1][sp2-1]=COUNTER_UI;
+            vykreslovac(a);}
+        else if(a[sp1][sp2-2==SEA]){
+            a[sp1][sp2-1]=COUNTER_UI;
+            vykreslovac(a);}}
+}
 
 void My_Turn(int a[9][9]){
     int s1,s2;
