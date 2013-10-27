@@ -3,8 +3,9 @@
 #include<windows.h>
 #include<time.h>
 #include"vykreslenie.h"
+#include"game.h"
 
-int user_input(){
+void user_input(void){
     int a[9][9]={(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),(SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA,SEA),};
     int x,y,i,j,z;
     srand(time(NULL));
@@ -22,27 +23,30 @@ int user_input(){
         for(j=0;j<9;j++){
             if(i==x && j==y){
                 for(z=j; z<j+5; z++){
-                    a[i][z]=SHIP;}}
+                    a[i][z]=SHIP_MINE;}}
             else if(i==first_UI_position && j==second_UI_position){
                 for(z=second_UI_position; z<second_UI_position+5; z++){
-                    a[i][z]=SHIP;}}
+                    a[i][z]=SHIP_UI;}}
             }}
     vykreslovac(a);}
 
-int vykreslovac(int a[9][9]){
-    int **b;
+void vykreslovac(int a[9][9]){
     int i, j;
+    system("cls");
     for(i=0; i<9; i++){
         printf("\n");
         for(j=0; j<9; j++){
-            if(a[i][j]==SHIP){
+            if(a[i][j]==SHIP_MINE){
                 printf("<");}
+            else if(a[i][j]==SHIP_UI){
+                printf(">");}
+            else if(a[i][j]==CORUPTED_SEA){
+                printf("x");}
+            else if(a[i][j]==COUNTER_MINE){
+                printf("x");}
+            else if(a[i][j]==COUNTER_UI){
+                printf("x");}
             else{
             printf(".");}}}
-    b=(int**)malloc(9*sizeof(int*));
-    for(i=0; i<9; i++){
-        b=(int*)malloc(9*sizeof(int));}
-    for(i=0; i<9; i++){
-        for(j=0; i<9; i++){
-            b[i]=a[i];}}
-    return b;}
+     game(a);}
+

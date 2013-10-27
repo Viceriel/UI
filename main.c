@@ -13,9 +13,7 @@
  * 
  */
 int main() {
-    int **b;
-    b=user_input();
-    printf("%d", b[5][1]);
+    user_input();
     getchar();
     getchar();
     return (EXIT_SUCCESS);}
