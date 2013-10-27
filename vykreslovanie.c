@@ -15,10 +15,10 @@ void user_input(void){
         printf("Zli vstup. Opakujte prosim");
         system("cls");
         user_input();}
-    int first_UI_position=(rand()%8)+1;
-    int second_UI_position=(rand()%4)+1;
+    int first_UI_position=(rand()%9);
+    int second_UI_position=(rand()%5);
     while(first_UI_position==x){
-        first_UI_position=(rand()%8)+1;}
+        first_UI_position=(rand()%9);}
     for(i=0;i<9;i++){
         for(j=0;j<9;j++){
             if(i==x && j==y){
@@ -39,7 +39,7 @@ void vykreslovac(int a[9][9]){
             if(a[i][j]==SHIP_MINE){
                 printf("<");}
             else if(a[i][j]==SHIP_UI){
-                printf(">");}
+                printf(".");}
             else if(a[i][j]==CORUPTED_SEA){
                 printf("x");}
             else if(a[i][j]==COUNTER_MINE){
