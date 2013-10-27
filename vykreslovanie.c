@@ -15,10 +15,10 @@ void user_input(void){
         printf("Zli vstup. Opakujte prosim");
         system("cls");
         user_input();}
-    int first_UI_position=(rand()%9)+1;
+    int first_UI_position=(rand()%8)+1;
     int second_UI_position=(rand()%4)+1;
     while(first_UI_position==x){
-        first_UI_position=(rand()%9)+1;}
+        first_UI_position=(rand()%8)+1;}
     for(i=0;i<9;i++){
         for(j=0;j<9;j++){
             if(i==x && j==y){
