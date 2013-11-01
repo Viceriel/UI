@@ -40,41 +40,53 @@ void UI(int a[9][9]){
                 UI=1;
                 sp1=i;
                 sp2=j;}}}
-    if(a[sp1][sp2+1]==CORUPTED_SEA && UI==1){
+    if((a[sp1][sp2+1]==CORUPTED_SEA && UI==1)){
         i=sp1;
         for(j=8;j>=0;j--){
             if(a[i][j]==COUNTER_UI){
                 sp2=j;
-                counter=1;}}}
-    
+                counter=1;}}
+        if(a[sp1][sp2-1]==CORUPTED_SEA){
+            counter=2;
+            if(a[sp1+1][sp2]==CORUPTED_SEA){
+                j=sp2;
+                for(i=8; i>=0; i--){
+                    if(a[i][j]==COUNTER_UI){
+                        sp1=i;
+                        counter=3;}}}}}
     
     if(UI==0){
-        srand(time(NULL));
-        int s1=(rand()%9);
-        int s2=(rand()%9);
-        while((a[s1][s2]==CORUPTED_SEA)||(a[s1][s2]==SHIP_UI)||(a[s1][s2]==COUNTER_MINE)){
-            s1=(rand()%9);
-            s2=(rand()%9);}
-        if(a[s1][s2]==SEA){
-            a[s1][s2]=CORUPTED_SEA;
-            vykreslovac(a);}
-        else if(a[s1][s2]==SHIP_MINE){
-            a[s1][s2]=COUNTER_UI;
-            vykreslovac(a);}}
+        UI_random(a);}
+    
     if(counter==0){
         if(a[sp1][sp2+1]==SHIP_MINE){
             a[sp1][sp2+1]=COUNTER_UI;
             vykreslovac(a);}
-    else if(a[sp1][sp2+1]==SEA){
+        else if(a[sp1][sp2+1]==SEA){
             a[sp1][sp2+1]=CORUPTED_SEA;
             vykreslovac(a);}}
     else if(counter==1){
         if(a[sp1][sp2-1]==SHIP_MINE){
             a[sp1][sp2-1]=COUNTER_UI;
             vykreslovac(a);}
-        else if(a[sp1][sp2-2==SEA]){
-            a[sp1][sp2-1]=COUNTER_UI;
+        else if(a[sp1][sp2-1]==SEA){
+            a[sp1][sp2-1]=CORUPTED_SEA;
             vykreslovac(a);}}
+    else if(counter==2){
+        if(a[sp1+1][sp2]==SHIP_MINE){
+            a[sp1+1][sp2]=COUNTER_UI;
+            vykreslovac(a);}
+        else if(a[sp1+1][sp2]==SEA){
+            a[sp1+1][sp2]=CORUPTED_SEA;
+            vykreslovac(a);}}
+    else if(counter==3){
+        if(a[sp1-1][sp2]==SHIP_MINE){
+            a[sp1-1][sp2]=COUNTER_UI;
+            vykreslovac(a);}
+        else if(a[sp1-1][sp2]==SEA){
+            a[sp1-1][sp2]=CORUPTED_SEA;
+            vykreslovac(a);}
+    }
 }
 
 void My_Turn(int a[9][9]){
@@ -91,4 +103,20 @@ void My_Turn(int a[9][9]){
     else{
        a[s1][s2]=CORUPTED_SEA;
        UI(a);}}
+
+void UI_random(int a[9][9]){
+    srand(time(NULL));
+    int s1=(rand()%9);
+    int s2=(rand()%9);
+    while((a[s1][s2]==CORUPTED_SEA)||(a[s1][s2]==SHIP_UI)||(a[s1][s2]==COUNTER_MINE)){
+            s1=(rand()%9);
+            s2=(rand()%9);}
+    if(a[s1][s2]==SEA){
+            a[s1][s2]=CORUPTED_SEA;
+            vykreslovac(a);}
+    else if(a[s1][s2]==SHIP_MINE){
+            a[s1][s2]=COUNTER_UI;
+            vykreslovac(a);}}
+    
+
 
