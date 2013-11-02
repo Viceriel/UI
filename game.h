@@ -12,6 +12,7 @@ void game(int [][]);
 void UI(int [][]);
 void My_Turn(int [][]);
 void winner(char a);
+void UI_random(int [][]);
 
 
 
