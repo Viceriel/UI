@@ -40,20 +40,22 @@ void UI(int a[9][9]){
                 UI=1;
                 sp1=i;
                 sp2=j;}}}
-    if((a[sp1][sp2+1]==CORUPTED_SEA && UI==1)){
+    if((a[sp1][sp2+1]==CORUPTED_SEA && UI==1)||(sp2+1>8)||(a[sp1][sp2+1]==SHIP_UI)){
         i=sp1;
         for(j=8;j>=0;j--){
             if(a[i][j]==COUNTER_UI){
                 sp2=j;
                 counter=1;}}
-        if(a[sp1][sp2-1]==CORUPTED_SEA){
+        if((a[sp1][sp2-1]==CORUPTED_SEA)||(sp2-1<0)||(a[sp1][sp2-1]==SHIP_UI)){
             counter=2;
-            if(a[sp1+1][sp2]==CORUPTED_SEA){
+            if((a[sp1+1][sp2]==CORUPTED_SEA)||(sp1+1>8)||(a[sp1+1][sp2]==SHIP_UI)){
                 j=sp2;
                 for(i=8; i>=0; i--){
                     if(a[i][j]==COUNTER_UI){
                         sp1=i;
-                        counter=3;}}}}}
+                        counter=3;}}
+            if((a[sp1-1][sp2]==CORUPTED_SEA)||(sp1-1<0)||(a[sp1-1][sp2]==SHIP_UI)){
+                UI=0;}}}}
     
     if(UI==0){
         UI_random(a);}
